@@ -2,9 +2,9 @@ const { Model, DataTypes } = require('sequelize');
 
 const sequelize = require('../config/connection.js');
 
-class Tag extends Model {}
+class Department extends Model {}
 
-Tag.init(
+Department.init(
   {
     // define columns
     id: {
@@ -14,7 +14,7 @@ Tag.init(
       autoIncrement: true
     },
     name: {
-      type:DataTypes.VARCHAR(30)
+      type:DataTypes.STRING(30)
     }
   },
   {

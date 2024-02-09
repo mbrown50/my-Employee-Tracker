@@ -2,10 +2,10 @@ const { Model, DataTypes } = require('sequelize');
 
 const sequelize = require('../config/connection');
 
-class Product extends Model {}
+class Role extends Model {}
 
 // set up fields and rules for Product model
-Product.init(
+Role.init(
   {
     // define columns
     id: {
@@ -15,7 +15,7 @@ Product.init(
       autoIncrement: true
     },
     title: {
-      type: DataTypes.VARCHAR(30),
+      type: DataTypes.STRING(30),
     },
     salary: {
       type:DataTypes.DECIMAL(10,2),
