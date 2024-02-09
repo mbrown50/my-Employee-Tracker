@@ -2,10 +2,10 @@ const { Model, DataTypes } = require('sequelize');
 
 const sequelize = require('../config/connection.js');
 
-class Category extends Model { }
+class Employee extends Model { }
 
 
-Category.init(
+Employee.init(
   {
     // define columns
     id: {
@@ -16,10 +16,10 @@ Category.init(
 
     },
     first_name: {
-      type: DataTypes.VARCHAR(30)
+      type: DataTypes.STRING(30)
     },
     last_name: {
-      type: DataTypes.VARCHAR(30)
+      type: DataTypes.STRING(30)
     },
     role_id: {
       type: DataTypes.INTEGER,

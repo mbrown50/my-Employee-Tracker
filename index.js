@@ -1,33 +1,26 @@
 // Include packages needed for this application
-
-// to know it's from a file and not a package needs "./"
-//const generateMarkdown = require('./utils/generateMarkdown')
 const inquirer = require('inquirer');
-//const fs = require('fs');
-//const { type } = require('os');
-//const { error } = require('console');
+const sequelize = require('sequelize');
+const { Department, Employee, Role } = require('./models');
 
 const actions = ['view all departments', 'view all roles', 'view all employees', 'add a department', 'add a role', 'add an employee', 'update an employee role'];
 
+// TODO pull from DB vs hardcode in
 let deparatments = [];
-deparatments.push('Properties','Properties', 'IT', 'Strategy', 'Operations');
-//console.log(deparatments);
+deparatments.push('IT', 'Properties', 'Strategy', 'Operations');
+
 let roles = [];
-roles.push('Programmer','Developer', 'Coder', 'Tester');
-//console.log(roles);
+roles.push('Developer', 'Engineer', 'Coder', 'Tester');
+
 let employees = [];
 employees.push('Melissa Brown', 'A B', 'C D', 'E F');
-
-//function populateListChoices() {
-    // 
-//}
 
 // Create an array of questions for user input
 const questions = [
     //THEN I am presented with the following options: view all departments, view all roles, view all employees, add a department, add a role, add an employee, and update an employee role
     {
         type: 'list',
-        message: 'What would you like to do?',
+        message: 'What would you want to do?',
         choices: actions,
         name: 'view',
     },
@@ -158,12 +151,12 @@ const questions = [
 ]
 
 // Create a function to initialize app
-function init() {
+async function init() {
     //populateListChoices(deparatments,roles,employees);
-   
+
     //console.log(employees);
     // ask questions using inquierer
-    return inquirer.prompt(questions)
+    return await inquirer.prompt(questions)
         //WHEN I choose to view all departments
         //THEN I am presented with a formatted table showing department names and department ids
         //WHEN I choose to view all roles
@@ -172,13 +165,43 @@ function init() {
         //THEN I am presented with a formatted table showing employee data, including employee ids, first names, last names, job titles, departments, salaries, and managers that the employees report to
         //WHEN add, adds data
         //WHEN update, updates data
-        .then(data => {
+        .then(async data => {
             //console.log("then: " + data.lastName);
             if (data.is_finished) {
                 //console.log("done: " + data.lastName);
                 return data;
             }
             else {
+                console.log(data.view);
+                if (data.view === "view all departments") {
+                    console.log(await Department.findAll());
+                }
+                else if (data.view === "view all roles") {
+                    console.log(await Role.findAll());
+                }
+                else if (data.view === "view all employees") {
+                    console.log(await Employee.findAll());
+                }
+                else if (data.view === " add a department") {
+                    console.log(data);
+                    // show all employees here 
+                }
+                else if (data.view === "add a role") {
+                    console.log(data);
+                    // show all employees here 
+                }
+                else if (data.view === "add an employee") {
+                    console.log(data);
+                    // show all employees here 
+                }
+                else if (data.view === "update an employee role") {
+                    console.log(data);
+                    // show all employees here 
+                }
+                else {
+                    console.log("Error: " + data);
+                }
+
                 //console.log("else :" + data.lastName);
                 return init();
             }

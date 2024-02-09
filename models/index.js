@@ -1,7 +1,7 @@
 // import models
-const Product = require('./Role');
-const Category = require('./Employee');
-const Tag = require('./Department');
+const Role = require('./Role');
+const Employee = require('./Employee');
+const Department = require('./Department');
 
 // One-to-Many
 

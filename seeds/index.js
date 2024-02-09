@@ -8,13 +8,14 @@ const seedAll = async () => {
   await sequelize.sync({ force: true });
   console.log('\n----- DATABASE SYNCED -----\n');
   await seedDepartments();
-  console.log('\n----- CATEGORIES SEEDED -----\n');
-
-  await seedEmployees();
-  console.log('\n----- PRODUCTS SEEDED -----\n');
+  console.log('\n----- DEPARTMENTS SEEDED -----\n');
 
   await seedRoles();
-  console.log('\n----- TAGS SEEDED -----\n');
+  console.log('\n----- ROLES SEEDED -----\n');
+
+  await seedEmployees();
+  console.log('\n----- EMPLOYEES SEEDED -----\n');
+
 
   process.exit(0);
 };
