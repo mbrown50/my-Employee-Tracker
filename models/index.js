@@ -2,50 +2,52 @@
 const Product = require('./Role');
 const Category = require('./Employee');
 const Tag = require('./Department');
-const ProductTag = require('./ProductTag');
 
 // One-to-Many
 
-// Products belongsTo Category
-// A prodcut belongs to a single category
-Product.belongsTo(Category, {
-  foreignKey: 'category_id',
+// Role belongsTo Department
+// A role belongs to a single department
+Role.belongsTo(Department, {
+  foreignKey: 'department_id',
 });
 
-// Categories have many Products
-// A category can have many products
-Category.hasMany(Product, {
-  foreignKey: 'category_id'
+// Departments have many Roles
+// A department can have many roles
+Department.hasMany(Role, {
+  foreignKey: 'department_id'
 });
 
-// Many-to-Many
+/// One-to-Many
 
-// Products belongToMany Tags (through ProductTag)
-// "Product" belongs to many "Tag", and is recorded in the "ProductTag" table, using "Product"'s ID.
-Product.belongsToMany(
-  Tag, 
-  {
-      through: 'ProductTag',
-      // note that this is the Parent's Id, not Child. 
-      foreignKey: 'product_id'
-  }
-)
+// Employee belongsTo Role
+// An employee belongs to a single role
+Employee.belongsTo(Role, {
+  foreignKey: 'role_id',
+});
 
-// Tags belongToMany Products (through ProductTag)
-// "Tag" belongs to many "Product", and is recorded in the "ProductTage" table, using "Tag"'s ID.
-Tag.belongsToMany(
-  Product,
-  {
-      through: 'ProductTag',
-      // note that this is the Child's Id, not Parent.
-      foreignKey: 'tag_id'
-  }
-)
+// Roles have many Employees
+// A role can have many employees
+Role.hasMany(Employee, {
+  foreignKey: 'role_id'
+});
+
+/// One-to-Many
+
+// Employee belongsTo Employee manager
+// An employee belongs to a single Employee manager
+Employee.belongsTo(Employee, {
+  foreignKey: 'manager_id',
+});
+
+// Employee managers have many Employees
+// An employee manager can have many employees
+Employee.hasMany(Employee, {
+  foreignKey: 'manager_id'
+});
 
 
 module.exports = {
-  Product,
-  Category,
-  Tag,
-  ProductTag,
+  Department,
+  Role,
+  Employee,
 };

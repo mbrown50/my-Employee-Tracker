@@ -2,7 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 
 const sequelize = require('../config/connection.js');
 
-class Category extends Model {}
+class Category extends Model { }
 
 
 Category.init(
@@ -13,11 +13,27 @@ Category.init(
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
-      
+
     },
-    category_name: {
-      type: DataTypes.STRING,
-      allowNull: false
+    first_name: {
+      type: DataTypes.VARCHAR(30)
+    },
+    last_name: {
+      type: DataTypes.VARCHAR(30)
+    },
+    role_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Role',
+        key: 'id',
+      }
+    },
+    manager_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Employee',
+        key: 'id',
+      },
     }
   },
   {
@@ -25,8 +41,8 @@ Category.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'Category',
+    modelName: 'Employee',
   }
 );
 
-module.exports = Category;
+module.exports = Employee;
