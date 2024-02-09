@@ -14,25 +14,17 @@ Product.init(
       primaryKey: true,
       autoIncrement: true
     },
-    product_name: {
-      type: DataTypes.STRING,
-      allowNull: false
+    title: {
+      type: DataTypes.VARCHAR(30),
     },
-    price: {
+    salary: {
       type:DataTypes.DECIMAL(10,2),
-      allowNull: false,
       is_decimal: true
     },
-    stock: {
-      type:DataTypes.INTEGER,
-      allowNull: true,
-      defaultValue: 10,
-      isnumeric: true
-    },
-    category_id: {
+    department_id: {
       type:DataTypes.INTEGER,
       references: {
-        model: 'Category',
+        model: 'Department',
         key: 'id',
       },
     }
@@ -42,8 +34,8 @@ Product.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'Product',
+    modelName: 'Role',
   }
 );
 
-module.exports = Product;
+module.exports = Role;

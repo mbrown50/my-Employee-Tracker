@@ -1,32 +1,20 @@
-const { Tag } = require('../models');
+const { Department } = require('../models');
 
-const tagData = [
+const departmentData = [
   {
-    tag_name: 'rock music',
+    name: 'IT',
   },
   {
-    tag_name: 'pop music',
+    name: 'Properties',
   },
   {
-    tag_name: 'blue',
+    name: 'Strategy',
   },
   {
-    tag_name: 'red',
-  },
-  {
-    tag_name: 'green',
-  },
-  {
-    tag_name: 'white',
-  },
-  {
-    tag_name: 'gold',
-  },
-  {
-    tag_name: 'pop culture',
+    name: 'Operations',
   },
 ];
 
-const seedTags = () => Tag.bulkCreate(tagData);
+const seedDepartments = () => Department.bulkCreate(departmentData);
 
-module.exports = seedTags;
+module.exports = seedDepartments;

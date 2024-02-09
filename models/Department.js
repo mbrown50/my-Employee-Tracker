@@ -13,8 +13,8 @@ Tag.init(
       primaryKey: true,
       autoIncrement: true
     },
-    tag_name: {
-      type:DataTypes.STRING
+    name: {
+      type:DataTypes.VARCHAR(30)
     }
   },
   {
@@ -22,8 +22,8 @@ Tag.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'Tag',
+    modelName: 'Department',
   }
 );
 
-module.exports = Tag;
+module.exports = Department;
